@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Adiii 💌</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ffe0ec, #ffd1f4, #e0c3fc);
+      background-size: 300% 300%;
+      animation: gradientMove 8s ease infinite;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .container {
+      background: rgba(255,255,255,0.95);
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      max-width: 600px;
+      animation: fadeIn 0.8s ease;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      color: #d63384;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
+    }
+
+    button {
+      padding: 12px 26px;
+      font-size: 16px;
+      margin: 10px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-weight: 600;
+    }
+
+    .yes {
+      background: #ff5fa2;
+      color: white;
+      transform: scale(1.15);
+    }
+
+    .no {
+      background: #777;
+      color: white;
+      transform: scale(0.9);
+      position: relative;
+    }
+
+    button:hover {
+      transform: scale(1.25);
+    }
+
+    img {
+      width: 150px;
+      margin-bottom: 15px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(20px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(-5px); }
+      25% { transform: translateX(5px); }
+      50% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes flash {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+
+    .floating-love {
+      position: absolute;
+      animation: floatUp 4s linear forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-200px); opacity: 0; }
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container" id="main">
+  <h1 style="color:#ff1493;">Initializing girlfriend mode… 💻</h1>
+  <p style="font-size:20px; color:#ff4da6;">
+    Warning: Emotional overload incoming 💕<br>
+    Proceed carefully.
+  </p>
+</div>
+
+<script>
+
+// SHOW MAIN PAGE AFTER 4 SECONDS
+setTimeout(() => {
+  document.getElementById("main").innerHTML = `
+    <img src="https://media1.tenor.com/m/6SdbE74CEGwAAAAd/bubu-rose-bubu-sweet.gif">
+    <h1>Will you be my Valentine, Adiii? 💌</h1>
+    <p>choose wisely 😏</p>
+
+    <button class="yes" onclick="yes()">YES 💖</button>
+    <button class="no" id="noBtn" onclick="no()">No 😡</button>
+  `;
+
+  const noBtn = document.getElementById("noBtn");
+
+  noBtn.addEventListener("mouseenter", () => {
+    const moveX = (Math.random() - 0.5) * 300;
+    const moveY = (Math.random() - 0.5) * 200;
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px) scale(0.9)`;
+  });
+
+}, 4000);
+
+
+function yes() {
+  document.getElementById("main").innerHTML = `
+    <img src="https://media.tenor.com/eSMmyYMJXOcAAAAi/miss-you.gif">
+    <h1>Wowww...You said yesssss 😌❤️</h1>
+    <p>Adiii… My motuuu, I miss you, I adore you, and I would still choose you every day.  
+    You make my heart shine. You give me confidence. You also make me wanna slap and hit you hard lol, but you still make my heart beat for you. 💘</p>
+    <button onclick="location.reload()">Replay drama 💕</button>
+  `;
+}
+
+function no() {
+
+  document.body.style.background = "#ff1a1a";
+  document.body.style.animation = "shake 0.4s infinite";
+
+  document.getElementById("main").innerHTML = `
+    <img src="https://media.tenor.com/N8Ah9_7yMugAAAAi/hit-bubu.gif">
+    <h1 style="color:#8b0000; animation: flash 0.6s infinite;">😡 CRITICAL FAILURE 😡</h1>
+    <p style="color:#5c0000;">
+      Boyfriend malfunction detected... <br>
+      Romance system shutting down... <br>
+      Immediate correction required.
+    </p>
+    <div id="repairBtn" style="display:none;">
+      <button onclick="secondChance()">Attempt repair 😏</button>
+    </div>
+  `;
+
+  setTimeout(function() {
+    document.getElementById("repairBtn").style.display = "block";
+  }, 1500);
+}
+
+function secondChance() {
+
+  document.body.style.animation = "";
+  document.body.style.background = "linear-gradient(135deg, #ffe0ec, #ffd1f4, #e0c3fc)";
+
+  document.getElementById("main").innerHTML = `
+    <h1>Choose properly now, Motu 😌</h1>
+
+    <button onclick="finalLove(0)">Yes obviously 💖</button>
+    <button onclick="finalLove(1)">Of course I will 😌</button>
+    <button onclick="finalLove(2)">I was born to be your Valentine Chotu 💕</button>
+    <button onclick="finalLove(3)">All yours Chotu 💘</button>
+  `;
+}
+
+function finalLove(index) {
+
+  let gifs = [
+    "https://media.tenor.com/3WxG2VePWSUAAAAi/bubududu-panda.gif",
+    "https://media.tenor.com/vzkveVGDzmAAAAAi/dudu-hug-bubu-dudu-kiss.gif",
+    "https://media.tenor.com/HKQ9w2VpTHwAAAAi/ily.gif",
+    "https://media.tenor.com/aMOxt0o16TQAAAAi/bubu-bubu-dudu.gif"
+  ];
+
+  let messages = [
+    "Because you were obviously meant to be mine. You make me feel safe and excited at the same time 💖",
+    "Because choosing me is the best decision you’ll ever make… and I promise choosing you was mine 😌",
+    "Because maybe we were always meant to find each other. Some connections just feel destined 💕",
+    "Because I’m all yours, Adiii. Completely, forever yours 💘"
+  ];
+
+  document.getElementById("main").innerHTML = `
+    <img src="${gifs[index]}">
+    <h1>Correct choice 😌❤️</h1>
+    <p>${messages[index]}</p>
+    ${index === 3 
+      ? "<button onclick='blushMode()'>Click if you wanna blush more 😌💗</button>" 
+      : "<button onclick='secondChance()'>Read another reason 💕</button>"}
+  `;
+}
+
+function blushMode() {
+
+  document.getElementById("main").innerHTML = `
+    <h1 style="font-size:38px; color:#ff1493;">I LOVE YOU SO MUCH ADIIII 🥹💗</h1>
+
+    <p style="font-size:22px; color:#ff4da6;">
+      I miss you every second. Every minute. Every hour. <br>
+      My heart literally waits for you. 😭💕
+    </p>
+
+    <p style="font-size:20px; color:#ff66b2;">
+      Come here and hug me already, Motu 😌💞
+    </p>
+
+    <button onclick="location.reload()">Replay romance 💕</button>
+  `;
+
+  createLoveExplosion();
+}
+
+function createLoveExplosion(){
+
+  const emojis = ["💖","💕","💗","❤️","😘","💋","💞","💓"];
+
+  for(let i=0;i<80;i++){
+
+    let love = document.createElement("div");
+    love.className = "floating-love";
+    love.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+
+    love.style.left = Math.random()*100 + "vw";
+    love.style.top = Math.random()*100 + "vh";
+    love.style.fontSize = (20 + Math.random()*30) + "px";
+
+    document.body.appendChild(love);
+
+    setTimeout(()=>{ love.remove(); },4000);
+  }
+}
+
+</script>
+
+</body>
+</html>
