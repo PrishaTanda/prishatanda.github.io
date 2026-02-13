@@ -124,7 +124,6 @@
 
 <script>
 
-// Intro delay
 setTimeout(() => {
   document.getElementById("main").innerHTML = `
     <img src="https://media1.tenor.com/m/6SdbE74CEGwAAAAd/bubu-rose-bubu-sweet.gif">
@@ -135,18 +134,24 @@ setTimeout(() => {
     <button class="no" id="noBtn">No 😡</button>
   `;
 
-    const noBtn = document.getElementById("noBtn");
+  const noBtn = document.getElementById("noBtn");
   const container = document.querySelector(".container");
 
   let moveCount = 0;
-  const maxMoves = 10;
+  const maxMoves = 5;
+  let locked = false;
 
   function moveButton(e) {
+    if (locked) return;
     e.preventDefault();
+
     moveCount++;
+    locked = true;
 
     if (moveCount >= maxMoves) {
-      no(); // auto-trigger failure
+      setTimeout(() => {
+        no();
+      }, 300);
       return;
     }
 
@@ -160,6 +165,10 @@ setTimeout(() => {
     noBtn.style.position = "absolute";
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
+
+    setTimeout(() => {
+      locked = false;
+    }, 300);
   }
 
   noBtn.addEventListener("mouseover", moveButton);
@@ -273,4 +282,3 @@ function createLoveExplosion(){
 
 </body>
 </html>
-
