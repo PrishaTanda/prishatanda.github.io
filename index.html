@@ -138,18 +138,19 @@ setTimeout(() => {
 
   const noBtn = document.getElementById("noBtn");
 
-  function moveButton() {
-  const moveX = (Math.random() - 0.5) * 300;
-  const moveY = (Math.random() - 0.5) * 200;
-  noBtn.style.transform = `translate(${moveX}px, ${moveY}px) scale(0.9)`;
+ const noBtn = document.getElementById("noBtn");
+
+function moveButton(e) {
+  e.preventDefault();
+
+  noBtn.style.position = "absolute";
+  noBtn.style.left = Math.random() * 80 + "vw";
+  noBtn.style.top = Math.random() * 70 + "vh";
 }
 
-noBtn.addEventListener("mouseenter", moveButton);
-noBtn.addEventListener("touchstart", function(e) {
-  e.preventDefault();
-  moveButton();
-});
-
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
+noBtn.addEventListener("click", moveButton);
 
 }, 4000);
 
@@ -272,5 +273,6 @@ function createLoveExplosion(){
 
 </body>
 </html>
+
 
 
