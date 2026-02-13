@@ -138,11 +138,18 @@ setTimeout(() => {
 
   const noBtn = document.getElementById("noBtn");
 
-  noBtn.addEventListener("mouseenter", () => {
-    const moveX = (Math.random() - 0.5) * 300;
-    const moveY = (Math.random() - 0.5) * 200;
-    noBtn.style.transform = `translate(${moveX}px, ${moveY}px) scale(0.9)`;
-  });
+  function moveButton() {
+  const moveX = (Math.random() - 0.5) * 300;
+  const moveY = (Math.random() - 0.5) * 200;
+  noBtn.style.transform = `translate(${moveX}px, ${moveY}px) scale(0.9)`;
+}
+
+noBtn.addEventListener("mouseenter", moveButton);
+noBtn.addEventListener("touchstart", function(e) {
+  e.preventDefault();
+  moveButton();
+});
+
 
 }, 4000);
 
@@ -265,4 +272,5 @@ function createLoveExplosion(){
 
 </body>
 </html>
+
 
