@@ -68,7 +68,6 @@
       background: #777;
       color: white;
       transform: scale(0.9);
-      position: relative;
     }
 
     button:hover {
@@ -110,9 +109,9 @@
       0% { transform: translateY(0); opacity: 1; }
       100% { transform: translateY(-200px); opacity: 0; }
     }
-
   </style>
 </head>
+
 <body>
 
 <div class="container" id="main">
@@ -125,7 +124,7 @@
 
 <script>
 
-// SHOW MAIN PAGE AFTER 4 SECONDS
+// Intro delay
 setTimeout(() => {
   document.getElementById("main").innerHTML = `
     <img src="https://media1.tenor.com/m/6SdbE74CEGwAAAAd/bubu-rose-bubu-sweet.gif">
@@ -133,24 +132,29 @@ setTimeout(() => {
     <p>choose wisely 😏</p>
 
     <button class="yes" onclick="yes()">YES 💖</button>
-    <button class="no" id="noBtn" onclick="no()">No 😡</button>
+    <button class="no" id="noBtn">No 😡</button>
   `;
 
   const noBtn = document.getElementById("noBtn");
+  const container = document.querySelector(".container");
 
- const noBtn = document.getElementById("noBtn");
+  function moveButton(e) {
+    e.preventDefault();
 
-function moveButton(e) {
-  e.preventDefault();
+    const containerRect = container.getBoundingClientRect();
+    const maxX = containerRect.width - noBtn.offsetWidth;
+    const maxY = containerRect.height - noBtn.offsetHeight;
 
-  noBtn.style.position = "absolute";
-  noBtn.style.left = Math.random() * 80 + "vw";
-  noBtn.style.top = Math.random() * 70 + "vh";
-}
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
 
-noBtn.addEventListener("mouseover", moveButton);
-noBtn.addEventListener("touchstart", moveButton);
-noBtn.addEventListener("click", moveButton);
+    noBtn.style.position = "absolute";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+  }
+
+  noBtn.addEventListener("mouseover", moveButton);
+  noBtn.addEventListener("touchstart", moveButton);
 
 }, 4000);
 
@@ -166,7 +170,6 @@ function yes() {
 }
 
 function no() {
-
   document.body.style.background = "#ff1a1a";
   document.body.style.animation = "shake 0.4s infinite";
 
@@ -183,19 +186,17 @@ function no() {
     </div>
   `;
 
-  setTimeout(function() {
+  setTimeout(() => {
     document.getElementById("repairBtn").style.display = "block";
   }, 1500);
 }
 
 function secondChance() {
-
   document.body.style.animation = "";
   document.body.style.background = "linear-gradient(135deg, #ffe0ec, #ffd1f4, #e0c3fc)";
 
   document.getElementById("main").innerHTML = `
     <h1>Choose properly now, Motu 😌</h1>
-
     <button onclick="finalLove(0)">Yes obviously 💖</button>
     <button onclick="finalLove(1)">Of course I will 😌</button>
     <button onclick="finalLove(2)">I was born to be your Valentine Chotu 💕</button>
@@ -204,7 +205,6 @@ function secondChance() {
 }
 
 function finalLove(index) {
-
   let gifs = [
     "https://media.tenor.com/3WxG2VePWSUAAAAi/bubududu-panda.gif",
     "https://media.tenor.com/vzkveVGDzmAAAAAi/dudu-hug-bubu-dudu-kiss.gif",
@@ -230,19 +230,15 @@ function finalLove(index) {
 }
 
 function blushMode() {
-
   document.getElementById("main").innerHTML = `
     <h1 style="font-size:38px; color:#ff1493;">I LOVE YOU SO MUCH ADIIII 🥹💗</h1>
-
     <p style="font-size:22px; color:#ff4da6;">
       I miss you every second. Every minute. Every hour. <br>
       My heart literally waits for you. 😭💕
     </p>
-
     <p style="font-size:20px; color:#ff66b2;">
       Come here and hug me already, Motu 😌💞
     </p>
-
     <button onclick="location.reload()">Replay romance 💕</button>
   `;
 
@@ -250,21 +246,16 @@ function blushMode() {
 }
 
 function createLoveExplosion(){
-
   const emojis = ["💖","💕","💗","❤️","😘","💋","💞","💓"];
 
   for(let i=0;i<80;i++){
-
     let love = document.createElement("div");
     love.className = "floating-love";
     love.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
-
     love.style.left = Math.random()*100 + "vw";
     love.style.top = Math.random()*100 + "vh";
     love.style.fontSize = (20 + Math.random()*30) + "px";
-
     document.body.appendChild(love);
-
     setTimeout(()=>{ love.remove(); },4000);
   }
 }
@@ -273,6 +264,3 @@ function createLoveExplosion(){
 
 </body>
 </html>
-
-
-
